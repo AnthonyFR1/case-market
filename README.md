@@ -34,3 +34,34 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+# Las apis 
+# Retrieved from our auth provider Kinde
+KINDE_CLIENT_ID=
+KINDE_CLIENT_SECRET=
+KINDE_ISSUER_URL=https://<tu-kinde-app>.kinde.com
+KINDE_SITE_URL=http://localhost:3000
+KINDE_POST_LOGOUT_REDIRECT_URL=http://localhost:3000
+KINDE_POST_LOGIN_REDIRECT_URL=http://localhost:3000/
+
+NEXT_PUBLIC_SERVER_URL=http://localhost:3000
+
+# Carga tu api de stripe
+STRIPE_SECRET_KEY=
+STRIPE_WEBHOOK_SECRET=
+
+# Carga tu api de uploadthing 
+UPLOADTHING_SECRET=
+UPLOADTHING_APP_ID=
+
+#Carga tu base de datos
+DATABASE_URL=
+
+# Opcional para recibir los mensajes
+ADMIN_EMAIL=
+
+# También opcional para recibir correo 
+RESEND_API_KEY=
+
+# en webhooks/rout.ts cambiar donde dice tucorreo por el tuyo para poder recibir los 
+# correos de resend
