@@ -11,32 +11,32 @@ const ThankYou = () => {
   const searchParams = useSearchParams()
   const orderId = searchParams.get('orderId') || ''
 
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ['get-payment-status', orderId],
+  const { data } = useQuery({
+    queryKey: ['get-payment-status'],
     queryFn: async () => await getPaymentStatus({ orderId }),
     retry: true,
     retryDelay: 500,
   })
 
-  if (isLoading) {
+  if (data === undefined) {
     return (
       <div className='w-full mt-24 flex justify-center'>
         <div className='flex flex-col items-center gap-2'>
           <Loader2 className='h-8 w-8 animate-spin text-zinc-500' />
-          <h3 className='font-semibold text-xl'>Cargando su pedido...</h3>
-          <p>Esto no llevará mucho tiempo.</p>
+          <h3 className='font-semibold text-xl'>Cargando su orden...</h3>
+          <p>Esto tomará un tiempo.</p>
         </div>
       </div>
     )
   }
 
-  if (isError || data === false) {
+  if (data === false) {
     return (
       <div className='w-full mt-24 flex justify-center'>
         <div className='flex flex-col items-center gap-2'>
           <Loader2 className='h-8 w-8 animate-spin text-zinc-500' />
           <h3 className='font-semibold text-xl'>Verificando su pago...</h3>
-          <p>Esto puede tardar un momento.</p>
+          <p>Esto no tomará mucho tiempo.</p>
         </div>
       </div>
     )
@@ -58,7 +58,7 @@ const ThankYou = () => {
           </p>
 
           <div className='mt-12 text-sm font-medium'>
-            <p className='text-zinc-900'>Número de pedido</p>
+            <p className='text-zinc-900'>Número de Pedido</p>
             <p className='mt-2 text-zinc-500'>{orderId}</p>
           </div>
         </div>
@@ -66,13 +66,13 @@ const ThankYou = () => {
         <div className='mt-10 border-t border-zinc-200'>
           <div className='mt-10 flex flex-auto flex-col'>
             <h4 className='font-semibold text-zinc-900'>
-              ¡Hiciste una gran elección!
+              Haz hecho una gran elección!
             </h4>
             <p className='mt-2 text-sm text-zinc-600'>
-              En CaseCobra creemos que una funda para teléfono no solo necesita
-              verse bien, pero también te durará los años venideros. Ofrecemos una
+              En CaseMarket creemos que una funda para teléfono no solo necesita
+              se ven bien, pero también te duran los años venideros. Ofrecemos un
               Garantía de impresión de 5 años: Si su estuche no es de la más alta calidad,
-              lo reemplazaremos de forma gratuita.
+              Lo reemplazaremos de forma gratuita.
             </p>
           </div>
         </div>
@@ -115,13 +115,13 @@ const ThankYou = () => {
           <div className='grid grid-cols-2 gap-x-6 border-t border-zinc-200 py-10 text-sm'>
             <div>
               <p className='font-medium text-zinc-900'>Estado del pago</p>
-              <p className='mt-2 text-zinc-700'>Pagado</p>
+              <p className='mt-2 text-zinc-700'>Paid</p>
             </div>
 
             <div>
               <p className='font-medium text-zinc-900'>Método de envío</p>
               <p className='mt-2 text-zinc-700'>
-                DHL, tarda hasta 3 días laborales
+                DHL, tarda hasta 3 días laborables
               </p>
             </div>
           </div>
